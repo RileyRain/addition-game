@@ -18,6 +18,8 @@ def generate_level_4_random_number():
     return random.randint(250, 500)
 
 
+
+#only addition for now
 def generate_random_operation():
     operators = ["+"]
     return random.choice(operators)
@@ -31,6 +33,7 @@ def subtract(n1, n2):
     return n1 - n2
 
 
+# create high score resource file or read if existing
 try:
     with open("data.txt") as data:
         high_score = (data.read())
@@ -51,6 +54,7 @@ def update_high_score():
 score = 0
 
 
+# main game loop
 def game():
     global score
     with open("data.txt") as data:
@@ -62,9 +66,13 @@ def game():
     elif score < 20:
         num1 = generate_level_2_random_number()
         num2 = generate_level_2_random_number()
-    else:
+    elif score < 30:
         num1 = generate_level_3_random_number()
         num2 = generate_level_3_random_number()
+    else:
+        num1 = generate_level_4_random_number()
+        num2 = generate_level_4_random_number()
+
     operator = generate_random_operation()
 
     if operator == "+":
